@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Participe e Concorra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================
+       RESET & BASE
+       ============================================ */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #f8f8f8;
+      --white: #ffffff;
+      --brown: #895129;
+      --brown-hover: #744320;
+      --brown-light: rgba(137, 81, 41, 0.12);
+      --brown-border: rgba(137, 81, 41, 0.25);
+      --text-primary: #111111;
+      --text-muted: #777777;
+      --text-gray: #666666;
+      --border: #dddddd;
+      --beige-bg: #fbf7f4;
+      --input-height: 60px;
+      --radius-card: 20px;
+      --radius-input: 10px;
+      --radius-btn: 10px;
+      --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.10);
+      --shadow-input: 0 2px 6px rgba(0, 0, 0, 0.06);
+      --font: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.5;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ============================================
+       LAYOUT CONTAINER
+       ============================================ */
+    .page-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 24px 16px 48px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 440px;
+    }
+
+    /* ============================================
+       CARD PRINCIPAL
+       ============================================ */
+    .card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+
+    /* ============================================
+       CABEÇALHO MARROM
+       ============================================ */
+    .card-header {
+      background-color: var(--brown);
+      padding: 42px 28px 38px;
+      text-align: center;
+    }
+
+    .card-header__title {
+      color: var(--white);
+      font-size: 42px;
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .card-header__subtitle {
+      color: var(--white);
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.35;
+      opacity: 0.95;
+    }
+
+    /* ============================================
+       FORMULÁRIO
+       ============================================ */
+    .card-body {
+      padding: 32px 24px 36px;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    .form-group:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .form-input,
+    .form-select {
+      width: 100%;
+      height: var(--input-height);
+      padding: 0 16px;
+      font-family: var(--font);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--text-primary);
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-input);
+      box-shadow: var(--shadow-input);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .form-input::placeholder {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .form-input:focus,
+    .form-select:focus {
+      border-color: var(--brown);
+      box-shadow: 0 0 0 3px rgba(137, 81, 41, 0.12), var(--shadow-input);
+    }
+
+    .form-input.error {
+      border-color: #d44;
+      box-shadow: 0 0 0 3px rgba(221, 68, 68, 0.10), var(--shadow-input);
+    }
+
+    .form-error-msg {
+      font-size: 13px;
+      color: #d44;
+      margin-top: 6px;
+      display: none;
+    }
+
+    .form-input.error + .form-error-msg {
+      display: block;
+    }
+
+    /* Select custom arrow */
+    .select-wrapper {
+      position: relative;
+    }
+
+    .select-wrapper::after {
+      content: '';
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 7px solid var(--text-muted);
+      pointer-events: none;
+    }
+
+    .form-select {
+      padding-right: 44px;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .form-select.has-value {
+      color: var(--text-primary);
+    }
+
+    /* ============================================
+       INSTAGRAM BLOCK
+       ============================================ */
+    .instagram-block {
+      background: var(--beige-bg);
+      border: 2px solid var(--brown-border);
+      border-radius: 18px;
+      padding: 32px 24px;
+      margin-top: 32px;
+      text-align: center;
+    }
+
+    .instagram-icon-circle {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--brown-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+    }
+
+    .instagram-icon-circle svg {
+      width: 36px;
+      height: 36px;
+      fill: var(--brown);
+    }
+
+    .instagram-block__title {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--brown);
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+
+    .instagram-block__subtitle {
+      font-size: 19px;
+      color: var(--text-gray);
+      line-height: 1.4;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    .instagram-profile-card {
+      background: var(--white);
+      border: 1px solid var(--brown-border);
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+      padding: 28px 16px;
+      margin-top: 28px;
+      text-align: center;
+    }
+
+    .instagram-profile-card__name {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .instagram-profile-card__handle {
+      font-size: 18px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* ============================================
+       CHECKBOXES
+       ============================================ */
+    .checkbox-group {
+      margin-top: 32px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      cursor: pointer;
+      user-select: none;
+      margin-bottom: 20px;
+    }
+
+    .checkbox-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .checkbox-item input[type="checkbox"] {
+      display: none;
+    }
+
+    .checkbox-custom {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--brown);
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease, border-color 0.2s ease;
+      margin-top: 1px;
+    }
+
+    .checkbox-custom svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: var(--white);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .checkbox-item input[type="checkbox"]:checked + .checkbox-custom {
+      background: var(--brown);
+      border-color: var(--brown);
+    }
+
+    .checkbox-item input[type="checkbox"]:checked + .checkbox-custom svg {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .checkbox-text {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1.45;
+    }
+
+    .checkbox-text a {
+      color: var(--brown);
+      text-decoration: underline;
+      font-weight: 500;
+      text-underline-offset: 3px;
+    }
+
+    .checkbox-text a:hover {
+      color: var(--brown-hover);
+    }
+
+    /* ============================================
+       BOTÃO FINAL
+       ============================================ */
+    .btn-submit {
+      display: block;
+      width: 100%;
+      height: 64px;
+      margin-top: 32px;
+      background: var(--brown);
+      color: var(--white);
+      font-family: var(--font);
+      font-size: 24px;
+      font-weight: 700;
+      border: none;
+      border-radius: var(--radius-btn);
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(137, 81, 41, 0.30);
+      transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-submit:hover {
+      background: var(--brown-hover);
+      box-shadow: 0 6px 18px rgba(137, 81, 41, 0.38);
+    }
+
+    .btn-submit:active {
+      transform: scale(0.98);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ============================================
+       TOAST / FEEDBACK
+       ============================================ */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--text-primary);
+      color: var(--white);
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 500;
+      padding: 16px 28px;
+      border-radius: 12px;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+      z-index: 999;
+      white-space: nowrap;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ============================================
+       RESPONSIVIDADE
+       ============================================ */
+    @media (max-width: 480px) {
+      .page-wrapper {
+        padding: 16px 12px 36px;
+      }
+
+      .card-header {
+        padding: 36px 20px 32px;
+      }
+
+      .card-header__title {
+        font-size: 34px;
+      }
+
+      .card-header__subtitle {
+        font-size: 20px;
+      }
+
+      .card-body {
+        padding: 26px 18px 30px;
+      }
+
+      .form-input,
+      .form-select {
+        font-size: 18px;
+        height: 56px;
+      }
+
+      .form-label {
+        font-size: 16px;
+      }
+
+      .instagram-block__title {
+        font-size: 28px;
+      }
+
+      .instagram-block__subtitle {
+        font-size: 17px;
+      }
+
+      .instagram-profile-card__name {
+        font-size: 22px;
+      }
+
+      .instagram-profile-card__handle {
+        font-size: 16px;
+      }
+
+      .checkbox-text {
+        font-size: 17px;
+      }
+
+      .btn-submit {
+        font-size: 22px;
+        height: 60px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .page-wrapper {
+        padding-top: 48px;
+        padding-bottom: 64px;
+      }
+    }
+
+    /* ============================================
+       ANIMAÇÃO DE ENTRADA
+       ============================================ */
+    .card {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: cardEnter 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+    }
+
+    @keyframes cardEnter {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-wrapper">
+    <div class="container">
+      <div class="card">
+
+        <!-- CABEÇALHO -->
+        <div class="card-header">
+          <h1 class="card-header__title">Participe e Concorra!</h1>
+          <p class="card-header__subtitle">Preencha seus dados e garanta seu número da sorte.</p>
+        </div>
+
+        <!-- FORMULÁRIO -->
+        <div class="card-body">
+          <form id="raffleForm" novalidate>
+
+            <!-- Nome Completo -->
+            <div class="form-group">
+              <label class="form-label" for="nome">Nome Completo</label>
+              <input
+                class="form-input"
+                type="text"
+                id="nome"
+                name="nome"
+                placeholder="Seu nome"
+                required
+                autocomplete="name"
+              >
+              <span class="form-error-msg">Por favor, preencha seu nome.</span>
+            </div>
+
+            <!-- CPF -->
+            <div class="form-group">
+              <label class="form-label" for="cpf">CPF</label>
+              <input
+                class="form-input"
+                type="text"
+                id="cpf"
+                name="cpf"
+                placeholder="Apenas números"
+                required
+                inputmode="numeric"
+                maxlength="14"
+                autocomplete="off"
+              >
+              <span class="form-error-msg">Por favor, insira um CPF válido.</span>
+            </div>
+
+            <!-- Celular -->
+            <div class="form-group">
+              <label class="form-label" for="celular">Celular</label>
+              <input
+                class="form-input"
+                type="tel"
+                id="celular"
+                name="celular"
+                placeholder="(00) 00000-0000"
+                required
+                inputmode="tel"
+                maxlength="15"
+                autocomplete="tel"
+              >
+              <span class="form-error-msg">Por favor, insira um número de celular.</span>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+              <label class="form-label" for="email">Email</label>
+              <input
+                class="form-input"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="seu@email.com"
+                required
+                autocomplete="email"
+              >
+              <span class="form-error-msg">Por favor, insira um email válido.</span>
+            </div>
+
+            <!-- CEP -->
+            <div class="form-group">
+              <label class="form-label" for="cep">CEP</label>
+              <input
+                class="form-input"
+                type="text"
+                id="cep"
+                name="cep"
+                placeholder="00000000"
+                required
+                inputmode="numeric"
+                maxlength="9"
+                autocomplete="postal-code"
+              >
+              <span class="form-error-msg">Por favor, insira um CEP válido.</span>
+            </div>
+
+            <!-- Unidade da Compra -->
+            <div class="form-group">
+              <label class="form-label" for="unidade">Unidade da Compra</label>
+              <div class="select-wrapper">
+                <select class="form-select" id="unidade" name="unidade" required>
+                  <option value="" disabled selected>Selecione a unidade</option>
+                  <option value="unidade-1">Unidade Centro</option>
+                  <option value="unidade-2">Unidade Norte</option>
+                  <option value="unidade-3">Unidade Sul</option>
+                  <option value="unidade-4">Unidade Leste</option>
+                  <option value="unidade-5">Unidade Oeste</option>
+                </select>
+              </div>
+              <span class="form-error-msg">Por favor, selecione uma unidade.</span>
+            </div>
+
+            <!-- Código do Cupom -->
+            <div class="form-group">
+              <label class="form-label" for="cupom">Código do Cupom</label>
+              <input
+                class="form-input"
+                type="text"
+                id="cupom"
+                name="cupom"
+                value="B6I1I6D6"
+                autocomplete="off"
+              >
+            </div>
+
+            <!-- INSTAGRAM BLOCK -->
+            <div class="instagram-block">
+              <div class="instagram-icon-circle">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="#895129" stroke-width="2"/>
+                  <circle cx="12" cy="12" r="5" fill="none" stroke="#895129" stroke-width="2"/>
+                  <circle cx="17.5" cy="6.5" r="1.5" fill="#895129"/>
+                </svg>
+              </div>
+              <h2 class="instagram-block__title">Siga nosso Instagram</h2>
+              <p class="instagram-block__subtitle">Acompanhe nossas novidades e promoções exclusivas!</p>
+
+              <div class="instagram-profile-card">
+                <p class="instagram-profile-card__name">Nome da Empresa</p>
+                <p class="instagram-profile-card__handle">@instagramdaempresa</p>
+              </div>
+            </div>
+
+            <!-- CHECKBOXES -->
+            <div class="checkbox-group">
+              <label class="checkbox-item">
+                <input type="checkbox" id="regulamento" name="regulamento" required>
+                <span class="checkbox-custom">
+                  <svg viewBox="0 0 14 14">
+                    <polyline points="2.5 7 5.5 10.5 11.5 3.5"/>
+                  </svg>
+                </span>
+                <span class="checkbox-text">
+                  Eu li e concordo com os <a href="#" onclick="return false;">regulamentos da promoção</a>.
+                </span>
+              </label>
+
+              <label class="checkbox-item">
+                <input type="checkbox" id="ofertas" name="ofertas" checked>
+                <span class="checkbox-custom">
+                  <svg viewBox="0 0 14 14">
+                    <polyline points="2.5 7 5.5 10.5 11.5 3.5"/>
+                  </svg>
+                </span>
+                <span class="checkbox-text">
+                  Aceito receber ofertas exclusivas.
+                </span>
+              </label>
+            </div>
+
+            <!-- BOTÃO -->
+            <button type="submit" class="btn-submit" id="btnSubmit">
+              Participar Agora
+            </button>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    /* ============================================
+       MÁSCARAS DE INPUT
+       ============================================ */
+    function maskCPF(value) {
+      return value
+        .replace(/\D/g, '')
+        .replace(/(\d{3})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d{1,2})$/, '$1-$2')
+        .slice(0, 14);
+    }
+
+    function maskPhone(value) {
+      return value
+        .replace(/\D/g, '')
+        .replace(/(\d{2})(\d)/, '($1) $2')
+        .replace(/(\d{5})(\d)/, '$1-$2')
+        .slice(0, 15);
+    }
+
+    function maskCEP(value) {
+      return value
+        .replace(/\D/g, '')
+        .replace(/(\d{5})(\d)/, '$1-$2')
+        .slice(0, 9);
+    }
+
+    document.getElementById('cpf').addEventListener('input', function (e) {
+      e.target.value = maskCPF(e.target.value);
+    });
+
+    document.getElementById('celular').addEventListener('input', function (e) {
+      e.target.value = maskPhone(e.target.value);
+    });
+
+    document.getElementById('cep').addEventListener('input', function (e) {
+      e.target.value = maskCEP(e.target.value);
+    });
+
+    /* ============================================
+       SELECT - COR AO SELECIONAR
+       ============================================ */
+    document.getElementById('unidade').addEventListener('change', function () {
+      if (this.value) {
+        this.classList.add('has-value');
+      } else {
+        this.classList.remove('has-value');
+      }
+    });
+
+    /* ============================================
+       VALIDAÇÃO E ENVIO
+       ============================================ */
+    const form = document.getElementById('raffleForm');
+    const toast = document.getElementById('toast');
+
+    function showToast(message, duration) {
+      duration = duration || 3000;
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(function () {
+        toast.classList.remove('show');
+      }, duration);
+    }
+
+    function validateField(input) {
+      var value = input.value.trim();
+      var isValid = true;
+
+      if (input.required && !value) {
+        isValid = false;
+      }
+
+      if (input.type === 'email' && value) {
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        isValid = emailPattern.test(value);
+      }
+
+      if (input.id === 'cpf' && value) {
+        isValid = value.replace(/\D/g, '').length === 11;
+      }
+
+      if (input.id === 'celular' && value) {
+        isValid = value.replace(/\D/g, '').length >= 10;
+      }
+
+      if (input.id === 'cep' && value) {
+        isValid = value.replace(/\D/g, '').length === 8;
+      }
+
+      if (input.tagName === 'SELECT' && input.required) {
+        isValid = !!input.value;
+      }
+
+      if (!isValid) {
+        input.classList.add('error');
+      } else {
+        input.classList.remove('error');
+      }
+
+      return isValid;
+    }
+
+    /* Validação em tempo real ao sair do campo */
+    var inputs = form.querySelectorAll('.form-input, .form-select');
+    inputs.forEach(function (input) {
+      input.addEventListener('blur', function () {
+        validateField(input);
+      });
+
+      input.addEventListener('input', function () {
+        if (input.classList.contains('error')) {
+          validateField(input);
+        }
+      });
+    });
+
+    /* Envio do formulário */
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var allValid = true;
+      var firstInvalid = null;
+
+      inputs.forEach(function (input) {
+        var valid = validateField(input);
+        if (!valid && allValid) {
+          allValid = false;
+          firstInvalid = input;
+        }
+      });
+
+      /* Verificar checkbox de regulamento */
+      var regulamentoCheckbox = document.getElementById('regulamento');
+      if (!regulamentoCheckbox.checked) {
+        allValid = false;
+        if (!firstInvalid) {
+          firstInvalid = regulamentoCheckbox;
+        }
+        showToast('Você precisa aceitar os regulamentos.');
+        return;
+      }
+
+      if (!allValid) {
+        if (firstInvalid) {
+          firstInvalid.focus();
+        }
+        showToast('Preencha todos os campos obrigatórios.');
+        return;
+      }
+
+      /* Coletar dados */
+      var data = {
+        nome: document.getElementById('nome').value.trim(),
+        cpf: document.getElementById('cpf').value.trim(),
+        celular: document.getElementById('celular').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        cep: document.getElementById('cep').value.trim(),
+        unidade: document.getElementById('unidade').value,
+        cupom: document.getElementById('cupom').value.trim(),
+        aceitaOfertas: document.getElementById('ofertas').checked
+      };
+
+      console.log('Dados do formulário:', data);
+
+      /* Feedback visual */
+      var btn = document.getElementById('btnSubmit');
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+
+      setTimeout(function () {
+        showToast('Cadastro realizado com sucesso!');
+        btn.disabled = false;
+        btn.textContent = 'Participar Agora';
+        form.reset();
+        document.getElementById('unidade').classList.remove('has-value');
+        document.getElementById('ofertas').checked = true;
+      }, 1500);
+    });
+  </script>
+
+</body>
+</html>
