@@ -1,8 +1,5 @@
 export const unidadesCompra = [
-  "EQUUS Indaiatuba",
-  "EQUUS Campinas",
-  "EQUUS Itu",
-  "Outra unidade",
+  "Unidade São Miguel Arcanjo",
 ] as const;
 
 export type UnidadeCompra = (typeof unidadesCompra)[number];

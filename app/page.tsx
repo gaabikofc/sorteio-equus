@@ -8,7 +8,6 @@ type FormState = {
   celular: string;
   email: string;
   cep: string;
-  unidade_compra: string;
   aceite_regulamento: boolean;
   aceite_marketing: boolean;
 };
@@ -19,19 +18,12 @@ const initialFormState: FormState = {
   celular: "",
   email: "",
   cep: "",
-  unidade_compra: "",
   aceite_regulamento: false,
   aceite_marketing: true,
 };
 
-const unidades = [
-  "EQUUS Indaiatuba",
-  "EQUUS Campinas",
-  "EQUUS Itu",
-  "Outra unidade",
-];
-
 const instagramUrl = "https://www.instagram.com/centrohipicoequus/";
+const unidadeCompraPadrao = "Unidade São Miguel Arcanjo";
 
 function onlyDigits(value: string) {
   return value.replace(/\D/g, "");
@@ -116,7 +108,6 @@ export default function Home() {
       return "Informe um email válido.";
     }
     if (onlyDigits(form.cep).length !== 8) return "Informe um CEP com 8 dígitos.";
-    if (!form.unidade_compra) return "Selecione a unidade da compra.";
     if (!form.aceite_regulamento) {
       return "Você precisa aceitar os regulamentos da promoção.";
     }
@@ -167,6 +158,7 @@ export default function Home() {
           cpf: onlyDigits(form.cpf),
           celular: onlyDigits(form.celular),
           cep: onlyDigits(form.cep),
+          unidade_compra: unidadeCompraPadrao,
           codigo_cupom: codigoCupom,
           cupom_token: cupomToken,
           instagram_token: instagramToken,
@@ -267,23 +259,6 @@ export default function Home() {
               value={form.cep}
               onChange={(event) => updateField("cep", maskCep(event.target.value))}
             />
-          </label>
-
-          <label className="field">
-            <span>Unidade da Compra</span>
-            <select
-              name="unidade_compra"
-              required
-              value={form.unidade_compra}
-              onChange={(event) => updateField("unidade_compra", event.target.value)}
-            >
-              <option value="">Selecione a unidade</option>
-              {unidades.map((unidade) => (
-                <option key={unidade} value={unidade}>
-                  {unidade}
-                </option>
-              ))}
-            </select>
           </label>
 
           <label className="field">

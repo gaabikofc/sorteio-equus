@@ -2,6 +2,8 @@
 
 Aplicacao Next.js para coletar participantes do Sorteio EQUUS, gerar cupom unico no servidor e salvar os dados em MySQL.
 
+A unidade da inscricao e preenchida automaticamente pelo backend como `Unidade São Miguel Arcanjo`.
+
 ## Requisitos
 
 - Node.js 18.18 ou superior
