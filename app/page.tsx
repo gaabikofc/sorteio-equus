@@ -201,7 +201,7 @@ export default function Home() {
             <span>Concorra a um</span>
             almoço especial
           </h1>
-          <p>Preencha seus dados e garanta sua participação nesta experiência Equus.</p>
+          <p>Preencha seus dados e garanta sua vaga no sorteio para um almoço grátis na Equus!</p>
         </header>
 
         <form className="raffle-form" onSubmit={handleSubmit} noValidate>
