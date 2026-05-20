@@ -22,7 +22,8 @@ const initialFormState: FormState = {
   aceite_marketing: true,
 };
 
-const instagramUrl = "https://www.instagram.com/centrohipicoequus/";
+const instagramUrl = "https://www.instagram.com/parqueturisticoequus/";
+const instagramHandle = "@parqueturisticoequus";
 const unidadeCompraPadrao = "Unidade São Miguel Arcanjo";
 
 function onlyDigits(value: string) {
@@ -192,86 +193,96 @@ export default function Home() {
     <main className="page-shell">
       <section className="raffle-card" aria-labelledby="raffle-title">
         <header className="card-header">
-          <p className="brand-mark">Sorteio EQUUS</p>
-          <h1 id="raffle-title">PARTICIPE E CONCORRA!</h1>
-          <p>Preencha seus dados e garanta seu número da sorte.</p>
+          <div className="brand-crest" aria-hidden="true">
+            <span>E</span>
+          </div>
+          <p className="brand-mark">Sorteio exclusivo</p>
+          <h1 id="raffle-title">
+            <span>Concorra a um</span>
+            almoço especial
+          </h1>
+          <p>Preencha seus dados e garanta sua participação nesta experiência Equus.</p>
         </header>
 
         <form className="raffle-form" onSubmit={handleSubmit} noValidate>
-          <label className="field">
-            <span>Nome Completo</span>
-            <input
-              name="nome_completo"
-              type="text"
-              required
-              placeholder="Seu nome"
-              value={form.nome_completo}
-              onChange={(event) => updateField("nome_completo", event.target.value)}
-            />
-          </label>
+          <div className="form-ornament" aria-hidden="true" />
 
-          <label className="field">
-            <span>CPF</span>
-            <input
-              name="cpf"
-              type="text"
-              inputMode="numeric"
-              required
-              placeholder="Apenas números"
-              value={form.cpf}
-              onChange={(event) => updateField("cpf", maskCpf(event.target.value))}
-            />
-          </label>
+          <div className="field-list">
+            <label className="field" data-icon="user">
+              <span>Nome completo</span>
+              <input
+                name="nome_completo"
+                type="text"
+                required
+                placeholder="Seu nome"
+                value={form.nome_completo}
+                onChange={(event) => updateField("nome_completo", event.target.value)}
+              />
+            </label>
 
-          <label className="field">
-            <span>Celular</span>
-            <input
-              name="celular"
-              type="text"
-              inputMode="numeric"
-              required
-              placeholder="(00) 00000-0000"
-              value={form.celular}
-              onChange={(event) => updateField("celular", maskPhone(event.target.value))}
-            />
-          </label>
+            <label className="field" data-icon="id">
+              <span>CPF</span>
+              <input
+                name="cpf"
+                type="text"
+                inputMode="numeric"
+                required
+                placeholder="Apenas números"
+                value={form.cpf}
+                onChange={(event) => updateField("cpf", maskCpf(event.target.value))}
+              />
+            </label>
 
-          <label className="field">
-            <span>Email</span>
-            <input
-              name="email"
-              type="email"
-              required
-              placeholder="seu@email.com"
-              value={form.email}
-              onChange={(event) => updateField("email", event.target.value)}
-            />
-          </label>
+            <label className="field" data-icon="phone">
+              <span>Celular</span>
+              <input
+                name="celular"
+                type="text"
+                inputMode="numeric"
+                required
+                placeholder="(00) 00000-0000"
+                value={form.celular}
+                onChange={(event) => updateField("celular", maskPhone(event.target.value))}
+              />
+            </label>
 
-          <label className="field">
-            <span>CEP</span>
-            <input
-              name="cep"
-              type="text"
-              inputMode="numeric"
-              required
-              placeholder="00000000"
-              value={form.cep}
-              onChange={(event) => updateField("cep", maskCep(event.target.value))}
-            />
-          </label>
+            <label className="field" data-icon="mail">
+              <span>Email</span>
+              <input
+                name="email"
+                type="email"
+                required
+                placeholder="seu@email.com"
+                value={form.email}
+                onChange={(event) => updateField("email", event.target.value)}
+              />
+            </label>
 
-          <label className="field">
-            <span>Código do Cupom</span>
-            <input
-              name="codigo_cupom"
-              type="text"
-              readOnly
-              value={loadingCupom ? "Gerando cupom..." : codigoCupom}
-              className="coupon-input"
-              aria-live="polite"
-            />
-          </label>
+            <label className="field" data-icon="pin">
+              <span>CEP</span>
+              <input
+                name="cep"
+                type="text"
+                inputMode="numeric"
+                required
+                placeholder="00000000"
+                value={form.cep}
+                onChange={(event) => updateField("cep", maskCep(event.target.value))}
+              />
+            </label>
+
+            <label className="field" data-icon="ticket">
+              <span>Código do cupom</span>
+              <input
+                name="codigo_cupom"
+                type="text"
+                readOnly
+                value={loadingCupom ? "Gerando cupom..." : codigoCupom}
+                className="coupon-input"
+                aria-live="polite"
+              />
+            </label>
+          </div>
 
           <section className="instagram-block" aria-labelledby="instagram-title">
             <div className="instagram-icon" aria-hidden="true">
@@ -282,11 +293,11 @@ export default function Home() {
               </svg>
             </div>
             <h2 id="instagram-title">Siga nosso Instagram</h2>
-            <p>Acompanhe nossas novidades, eventos e promoções exclusivas!</p>
+            <p>Acompanhe nossas novidades, eventos e promoções exclusivas.</p>
 
             <div className="instagram-profile">
-              <strong>EQUUS</strong>
-              <span>@centrohipicoequus</span>
+              <strong>Equus</strong>
+              <span>{instagramHandle}</span>
             </div>
 
             <a

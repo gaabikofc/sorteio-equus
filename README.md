@@ -60,7 +60,7 @@ Acesse `http://localhost:3000`.
 1. Abra a pagina.
 2. Aguarde o campo "Codigo do Cupom" ser preenchido.
 3. Preencha os dados obrigatorios.
-4. Clique em "Abrir Instagram" para acessar `https://www.instagram.com/centrohipicoequus/`.
+4. Clique em "Abrir Instagram" para acessar `https://www.instagram.com/parqueturisticoequus/`.
 5. Marque o aceite do regulamento.
 6. Clique em "Participar Agora".
 
