@@ -193,8 +193,8 @@ export default function Home() {
     <main className="page-shell">
       <section className="raffle-card" aria-labelledby="raffle-title">
         <header className="card-header">
-          <div className="brand-crest" aria-hidden="true">
-            <span>E</span>
+          <div className="brand-crest">
+            <img src="/assets/equus-logo.jpg" alt="Equus Centro Hipico" />
           </div>
           <p className="brand-mark">Sorteio exclusivo</p>
           <h1 id="raffle-title">
